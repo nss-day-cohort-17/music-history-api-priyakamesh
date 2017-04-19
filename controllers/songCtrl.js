@@ -25,11 +25,16 @@ module.exports.getOneSong = ({params: {SongId}},res,next) =>{
 }
 // <stretch goal: methods for adding, deleting, editing a song>
 module.exports.addSong = ({body},res,next) =>{
-  console.log("body",body);
   Song.forge(body)
   .save()
   .then( () => res.status(200).json({"msg" : "successfully added"}))
   .catch ((error)=>{
     next (error)
   });
+}
+
+module.exports.deleteSong = ({params: {SongId}}, res,next) =>{
+  Song.deleteSong(SongId)
+  .then(()=> res.status(200).json({"msg": "deleted successfully"}))
+  .catch((error)=> next(error))
 }

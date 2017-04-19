@@ -30,8 +30,17 @@ const Song = bookshelf.Model.extend({
         return error;
       })
 
-    }
+    },
+  deleteSong: function(SongId) {
+    return this.where({SongId})
+    .destroy()
+    .then( () => {
+      console.log("im in destroy")
+      return {"msg": "Song deleted succesfully"}
+    })
+    .catch ( (error)=> {return error})
   }
+}
 )
 // When adding the 'table' property use your old friend DB Browser for SQLite to
 // open up the musichistory db and inspect the tables. Add the appropriate table name for
