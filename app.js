@@ -2,11 +2,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+// <Include the router index file>
+var routes = require('./routes/')
 var app = express();
 
-// <Include the router index file>
-var routes = require('./routes/index')
+
 // <Setup your routes middleware>
+app.use(bodyParser.json());
 app.use('/api/v1/',routes)
 
 // <catch any undefined routes with a 404 middleware>
@@ -43,5 +45,4 @@ app.listen(port, ()=>{
   console.log(`listening to ${port}`)
 })
 
-module.exports = app;
 module.exports = app;
