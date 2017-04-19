@@ -39,6 +39,12 @@ const Song = bookshelf.Model.extend({
       return {"msg": "Song deleted succesfully"}
     })
     .catch ( (error)=> {return error})
+  },
+  editSong: function(SongId) {
+    return this.where({SongId})
+    .save({AlbumId: 21},{patch:true})
+    .then( ()=> {return {"msg": "Song edited succesfully"}})
+    .catch ( (error)=> {return error})
   }
 }
 )

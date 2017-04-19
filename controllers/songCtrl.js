@@ -38,3 +38,9 @@ module.exports.deleteSong = ({params: {SongId}}, res,next) =>{
   .then(()=> res.status(200).json({"msg": "deleted successfully"}))
   .catch((error)=> next(error))
 }
+
+module.exports.editSong = ({params: {SongId}}, res, next) => {
+  Song.editSong(SongId)
+  .then( () => res.status(200).json({"msg": "edited successfully"}))
+  .catch ( (error)=> {next (error)})
+};
