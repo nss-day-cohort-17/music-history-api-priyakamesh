@@ -13,4 +13,14 @@ module.exports.getAllSongs = (req,res,next) => {
     next(error);
   });
 };
+module.exports.getOneSong = ({params: {SongId}},res,next) =>{
+  Song.getSong(SongId)
+  .then( (song) => {
+    res.status(200).json(song)
+    console.log("song",song);
+  })
+  .catch ( (error)=>{
+    next(error);
+  });
+}
 // <stretch goal: methods for adding, deleting, editing a song>
