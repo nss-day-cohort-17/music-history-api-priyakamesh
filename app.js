@@ -2,10 +2,10 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-let app = express();
+var app = express();
 
 // <Include the router index file>
-var routes = require('./routes/')
+var routes = require('./routes/index')
 // <Setup your routes middleware>
 app.use('/api/v1/',routes)
 
@@ -36,3 +36,12 @@ app.use((err,req,res,next)=>{
     error: {}
   });
 });
+
+const port = process.env.PORT || 3000
+
+app.listen(port, ()=>{
+  console.log(`listening to ${port}`)
+})
+
+module.exports = app;
+module.exports = app;
