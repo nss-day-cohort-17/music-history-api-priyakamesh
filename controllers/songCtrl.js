@@ -39,8 +39,8 @@ module.exports.deleteSong = ({params: {SongId}}, res,next) =>{
   .catch((error)=> next(error))
 }
 
-module.exports.editSong = ({params: {SongId}}, res, next) => {
-  Song.editSong(SongId)
+module.exports.editSong = (req, res, next) => {
+  Song.editSong(req.params.SongId,req.body)
   .then( () => res.status(200).json({"msg": "edited successfully"}))
   .catch ( (error)=> {next (error)})
 };

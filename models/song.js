@@ -40,10 +40,14 @@ const Song = bookshelf.Model.extend({
     })
     .catch ( (error)=> {return error})
   },
-  editSong: function(SongId) {
+  editSong: function(SongId,body) {
+    console.log("body",body);
+    console.log("SongId",SongId);
     return this.where({SongId})
-    .save({AlbumId: 21},{patch:true})
-    .then( ()=> {return {"msg": "Song edited succesfully"}})
+    .save({body},{patch: true})
+    .then( (thing)=> {
+      console.log(thing, "thhe thing")
+      return {"msg": "Song edited succesfully"}})
     .catch ( (error)=> {return error})
   }
 }
